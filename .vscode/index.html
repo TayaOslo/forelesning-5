@@ -30,7 +30,7 @@
 
       console.log(fetchStaff());
 
-      async function fetchAnsShowStaff() {
+      async function fetchAndShowStaff() {
         try {
           hogwartsStaff = await fetchStaff();
           showAllStaff();
@@ -41,16 +41,16 @@
         }
       }
 
-      fetchAnsShowStaff();
-      //
+      fetchAndShowStaff();
 
+      //Read for å vise alle ansatte
       function showAllStaff() {
         staffContainer.innerHTML = "";
+
         hogwartsStaff.forEach((staffMember, index) => {
           const staffCard = document.createElement("div");
 
           //Slette
-
           const deleteBtn = document.createElement("button");
           deleteBtn.innerHTML = "Slett ansatt";
           deleteBtn.style.backgroundColor = "red";
@@ -60,13 +60,13 @@
 
           //Edit
           const nameInput = document.createElement("input");
-          nameInput = "text";
+          nameInput.type = "text";
           nameInput.placeholder = "Skriv inn på ansatt";
           nameInput.id = `nameInput-${index}`;
 
           const editBtn = document.createElement("button");
           editBtn.innerHTML = "Rediger ansatt";
-          editBtn.addEventListener("cleck", function () {
+          editBtn.addEventListener("click", function () {
             editStaffMember(index);
           });
 
